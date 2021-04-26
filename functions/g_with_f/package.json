@@ -13,7 +13,7 @@
     "apollo",
     "fauna"
   ],
-  "author": "Netlify",
+  "author": "Netlify" ,
   "license": "MIT",
   "dependencies": {
     "apollo-link-context": "^1.0.20",

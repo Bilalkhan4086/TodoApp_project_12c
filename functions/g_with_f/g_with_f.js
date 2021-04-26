@@ -20,13 +20,16 @@ type Query {
 
 type Mutation {
   delete_todo(id:ID!) : data
-  add_todo(todo:String!,done:Boolean!) : data
+  add_todo(todo:String!,done:Boolean!) : String
   update_todo(id:ID!,todo:String!,done:Boolean!) : data
 }
 
 `;
 
 const resolvers = {
+
+// Queries
+
  Query : {
     message : async(parent, args, context)=>{
       try {
@@ -44,13 +47,24 @@ const resolvers = {
             done: d.data.done,
            })
          })
+
         console.log("Results form server are here =",allData)
         return allData;
+
       } catch (err) {
         return ("Error is",err.toString());
       }
-    },},
+
+    },}
+    
+    ,
+
+    // Mutations
+
     Mutation:{
+
+// Delete todos
+
       delete_todo : async(_,{id})=>{
       try {
         var client = new fauna.Client({ secret: process.env.FAUNADB_SERVER_SECRET });
@@ -70,7 +84,10 @@ const resolvers = {
       }  
     
       ,    
-      update_todo : async(_,{id,todo,done})=>{
+      
+// Update todos
+
+update_todo : async(_,{id,todo,done})=>{
         try {
           var client = new fauna.Client({ secret: process.env.FAUNADB_SERVER_SECRET });
           console.log("id from server =",id)
@@ -87,10 +104,14 @@ const resolvers = {
             todo: result.data.todo,
             done: result.data.done,
            };
+
         } catch (err) {
           return ("Error is",err.toString());
         }
-      },   
+      },  
+      
+// Add todos      
+
       add_todo : async(_,{todo,done})=>{
         try {
           var client = new fauna.Client({ secret: process.env.FAUNADB_SERVER_SECRET });
@@ -101,16 +122,14 @@ const resolvers = {
             );
              
           console.log("Results form server are here =",result)
-          return({
-            id: result.ref.id,
-            todo: result.data.todo,
-            done: result.data.done,
-           });
+          return("Done")
         } catch (err) {
           return ("Error is",err.toString());
         }
       },    
     }}
+
+// Configuring Server
 
 const server = new ApolloServer({
   typeDefs,

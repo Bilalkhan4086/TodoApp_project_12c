@@ -20,7 +20,7 @@ type Query {
 
 type Mutation {
   delete_todo(id:ID!) : data
-  add_todo(todo:String!,done:Boolean!) : String
+  add_todo(todo:String!,done:Boolean!) : data
   update_todo(id:ID!,todo:String!,done:Boolean!) : data
 }
 
@@ -101,7 +101,11 @@ const resolvers = {
             );
              
           console.log("Results form server are here =",result)
-          return("Done");
+          return({
+            id: result.ref.id,
+            todo: result.data.todo,
+            done: result.data.done,
+           });
         } catch (err) {
           return ("Error is",err.toString());
         }

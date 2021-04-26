@@ -2,7 +2,6 @@ import * as React from "react"
 import Layout from "../components/layout"
 import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import { Flex } from "@theme-ui/components";
 
 
 const APOLLO_QUERY = gql`
@@ -33,7 +32,10 @@ const APOLLO_QUERY = gql`
 
   const ADD_TODO = gql`
   mutation add_todo($todo:String!,$done:Boolean!){
-    add_todo(todo:$todo,done:$done)
+    add_todo(todo:$todo,done:$done){
+      todo
+      done
+    }
   }
   `;
 

@@ -98,7 +98,7 @@ const IndexPage:React.FC = () => {
       <div style={{ display: "flex", justifyContent: "center" }}>
 
         <form style={{ textAlign: "left" }} onSubmit={(e) => { e.preventDefault(); UpdateId.length ? updateHandler(UpdateId, UpdateValTodo, UpdateValUrl) : addHandler(UpdateValTodo, UpdateValUrl); setUpdateId(""); setUpdateValTodo(''); setUpdateValUrl(false); }}>
-          <label htmlFor="todo">Text</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <label htmlFor="todo">Todo</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input className="todo" type="text" value={UpdateValTodo} onChange={(e) => { setUpdateValTodo(e.target.value) }} /><br /><br />
           <label htmlFor="todo">completed</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input className="done" type="checkbox" value={UpdateValUrl} checked={UpdateValUrl} onChange={() => { setUpdateValUrl(!UpdateValUrl) }} /><br /><br />

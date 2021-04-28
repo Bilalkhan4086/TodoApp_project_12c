@@ -101,7 +101,8 @@ const IndexPage:React.FC = () => {
           <label htmlFor="todo">Todo</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input className="todo" type="text" value={UpdateValTodo} onChange={(e) => { setUpdateValTodo(e.target.value) }} /><br /><br />
           <label htmlFor="todo">Status</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input className="done" type="checkbox" value={UpdateValUrl} checked={UpdateValUrl} onChange={() => { setUpdateValUrl(!UpdateValUrl) }} /><br /><br />
+    <input className="done" type="checkbox" value={UpdateValUrl} checked={UpdateValUrl} onChange={() => { setUpdateValUrl(!UpdateValUrl) }} />{UpdateValUrl ? "Completed":"Not Completed"}
+    <br /><br />
           <button disabled={UpdateValTodo === "" ? true : false}>submit</button>
         </form>
 
